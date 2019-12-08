@@ -86,5 +86,20 @@ public class ManagerDaoProxy implements ManagerDao {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	@Override
+	public boolean doCheckPassword(String username, String password) throws Exception {
+		boolean flag = false;
+		Manager manager = null;
+		try {
+			manager = this.dao.findByUsername(username) ;
+			if(password.equals(manager.getPassword())) {
+				flag = true;
+			}
+		} catch (Exception e) {
+		}finally {
+			this.dbc.close();
+		}
+		return flag;
+	}
 	
 }

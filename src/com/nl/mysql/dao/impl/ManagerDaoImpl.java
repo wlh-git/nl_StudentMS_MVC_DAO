@@ -169,8 +169,12 @@ public class ManagerDaoImpl implements ManagerDao {
 				flag = false;
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		return flag;
+	}
+
+	@Override
+	public boolean doCheckPassword(String username, String password) throws Exception {
+		return false;
 	}
 }

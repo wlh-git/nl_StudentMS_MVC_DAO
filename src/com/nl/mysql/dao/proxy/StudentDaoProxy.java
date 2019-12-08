@@ -71,5 +71,19 @@ public class StudentDaoProxy implements StudentDao {
 		
 		return false;
 	}
+	public boolean doCheckname(String ID,String identify,String name) throws Exception {
+		boolean flag = false;
+		Student student = null;
+		try {
+			student = this.dao.findByID(ID) ;
+			if(identify.equals(student.getIdentify())&&name.equals(student.getName())) {
+				flag = true;
+			}
+		} catch (Exception e) {
+		}finally {
+			this.dbc.close();
+		}
+		return flag;
+	}
 
 }

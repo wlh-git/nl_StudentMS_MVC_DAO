@@ -11,4 +11,5 @@ public interface ManagerDao {
 	public Manager findByUsername(String username) throws Exception;	//通过管理员的用户名查找某管理员信息
 	public List<Manager> findAll() throws Exception;				//查找所有的管理员信息
 	public boolean doCheck(String username)  throws Exception;
+	public boolean doCheckPassword(String username,String password) throws Exception;
 }

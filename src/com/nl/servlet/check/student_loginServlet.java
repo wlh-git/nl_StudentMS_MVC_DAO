@@ -11,8 +11,6 @@ import javax.swing.JOptionPane;
 
 import com.nl.mysql.dao.StudentDao;
 import com.nl.mysql.dao.factory.DaoFactory;
-import com.nl.mysql.dao.proxy.StudentDaoProxy;
-import com.nl.vo.Student;
 
 /**
  * Servlet implementation class student_loginServlet
@@ -32,25 +30,18 @@ public class student_loginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		//int i = 0;
 		String ID = request.getParameter("ID");
-		String identify = request.getParameter("identify");
-		String name = request.getParameter("name");
+		String identify=request.getParameter("identify");
+		String name=request.getParameter("name");
 		StudentDao sql = DaoFactory.getStudentDaoInstance();
-		//ResultSet rs = sql.selectData("select name,identify from student where id='" + ID + "'");
-		Student student = new Student() ;
-		student.setID(ID);
-		student.setIdentify(identify);
-		student.setName(name);
 		try {
-			if (sql.doCheck(ID)) {
+			if (sql.doCheckname(ID,identify,name)) {
 				response.setHeader("refresh", "0;URL=student.jsp");
 			}else {
-				JOptionPane.showMessageDialog(null, "身份信息核对不正确", "请重新核对你的学号、身份证号和姓名!!!", JOptionPane.ERROR_MESSAGE);
-				response.setHeader("refresh", "0;URL=login.jsp");
+				JOptionPane.showMessageDialog(null, "请重新核对你的学号、身份证号和姓名!!!", "身份信息核对不正确", JOptionPane.ERROR_MESSAGE);
+				response.setHeader("refresh", "0;URL=index.jsp");
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

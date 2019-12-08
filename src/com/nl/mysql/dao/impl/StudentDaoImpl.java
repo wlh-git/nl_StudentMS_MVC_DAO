@@ -154,9 +154,13 @@ public class StudentDaoImpl implements StudentDao {
 				flag = false;
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		return flag;
+	}
+
+	@Override
+	public boolean doCheckname(String iD, String identify, String name) throws Exception {
+		return false;
 	}
 
 }
