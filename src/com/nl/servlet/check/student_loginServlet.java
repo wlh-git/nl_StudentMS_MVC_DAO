@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
 import com.nl.mysql.dao.StudentDao;
+import com.nl.mysql.dao.factory.DaoFactory;
 import com.nl.mysql.dao.proxy.StudentDaoProxy;
 import com.nl.vo.Student;
 
@@ -39,7 +40,7 @@ public class student_loginServlet extends HttpServlet {
 		String ID = request.getParameter("ID");
 		String identify = request.getParameter("identify");
 		String name = request.getParameter("name");
-		StudentDao sql = new StudentDaoProxy();
+		StudentDao sql = DaoFactory.getStudentDaoInstance() ;
 		//ResultSet rs = sql.selectData("select name,identify from student where id='" + ID + "'");
 		Student student = new Student() ;
 		student.setID(ID);
