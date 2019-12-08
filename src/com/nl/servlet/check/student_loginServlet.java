@@ -36,7 +36,11 @@ public class student_loginServlet extends HttpServlet {
 		String ID = request.getParameter("ID");
 		String identify = request.getParameter("identify");
 		String name = request.getParameter("name");
+
 		StudentDao sql = DaoFactory.getStudentDaoInstance();
+
+		StudentDao sql = DaoFactory.getStudentDaoInstance() ;
+
 		//ResultSet rs = sql.selectData("select name,identify from student where id='" + ID + "'");
 		Student student = new Student() ;
 		student.setID(ID);
@@ -46,7 +50,7 @@ public class student_loginServlet extends HttpServlet {
 			if (sql.doCheck(ID)) {
 				response.setHeader("refresh", "0;URL=student.jsp");
 			}else {
-				JOptionPane.showMessageDialog(null, "Éí·İĞÅÏ¢ºË¶Ô²»ÕıÈ·", "ÇëÖØĞÂºË¶ÔÄãµÄÑ§ºÅ¡¢Éí·İÖ¤ºÅºÍĞÕÃû!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "èº«ä»½ä¿¡æ¯æ ¸å¯¹ä¸æ­£ç¡®", "è¯·é‡æ–°æ ¸å¯¹ä½ çš„å­¦å·ã€èº«ä»½è¯å·å’Œå§“å!!!", JOptionPane.ERROR_MESSAGE);
 				response.setHeader("refresh", "0;URL=login.jsp");
 			}
 		} catch (Exception e) {

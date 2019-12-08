@@ -13,12 +13,16 @@ public class GradeDaoProxy implements GradeDao {
 	private DataBaseConnection dbc = null ;
 	private GradeDao dao = null ;
 	//private int count = 0 ;
+
+	private int count = 0 ;
+
 	public GradeDaoProxy() {
 		this.dbc = new DataBaseConnection() ;
 		this.dao = new GradeDaoImpl(this.dbc.getConnection()) ;
 	}
 	@Override
 	public boolean doAdd(Grade grade) throws Exception {
+
 		boolean flag = false ;
 		try {
 			if(grade!=null) {
@@ -30,6 +34,11 @@ public class GradeDaoProxy implements GradeDao {
 			this.dbc.close();
 		}
 		return flag ;
+		this.dao.doAdd(grade) ;
+		
+		
+		return false;
+
 	}
 	@Override
 	public boolean doUpdate(Grade grade) throws Exception {
