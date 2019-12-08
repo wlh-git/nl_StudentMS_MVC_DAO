@@ -7,7 +7,6 @@ import com.nl.mysql.dao.GradeDao;
 import com.nl.mysql.dao.impl.GradeDaoImpl;
 import com.nl.mysql.dbc.DataBaseConnection;
 import com.nl.vo.Grade;
-import com.nl.vo.Manager;
 
 public class GradeDaoProxy implements GradeDao {
 	private DataBaseConnection dbc = null ;
@@ -19,6 +18,7 @@ public class GradeDaoProxy implements GradeDao {
 	}
 	@Override
 	public boolean doAdd(Grade grade) throws Exception {
+
 		boolean flag = false ;
 		try {
 			if(grade!=null) {
@@ -67,5 +67,4 @@ public class GradeDaoProxy implements GradeDao {
 		}
 		return list;
 	}
-	
 }
