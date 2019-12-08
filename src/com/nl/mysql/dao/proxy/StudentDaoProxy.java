@@ -1,5 +1,6 @@
 package com.nl.mysql.dao.proxy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.nl.mysql.dao.StudentDao;
@@ -18,7 +19,7 @@ public class StudentDaoProxy implements StudentDao {
 	public boolean doAddStudent(Student student) throws Exception {
 		boolean flag = false ;
 		try {
-			if (this.dao.findByID(student.getID())==null) {
+			if (this.dao.doCheck(student.getID())) {
 				flag = this.dao.doAddStudent(student) ;
 			}
 		} catch (Exception e) {
@@ -30,26 +31,44 @@ public class StudentDaoProxy implements StudentDao {
 	}
 
 	public boolean doDelete(String ID) throws Exception {
-		
-		
-		
-		return false;
+		boolean flag = false ;
+		try {
+			if (this.dao.doCheck(ID)){
+				flag = this.dao.doDelete(ID) ;
+			}
+		} catch (Exception e) {
+			throw e ;
+		}finally {
+			this.dbc.close();
+		}
+		return flag;
 	}
 
 	public Student findByID(String ID) throws Exception {
 		Student student = null ;
-		
-		
+		try {
+				student = this.dao.findByID(ID) ;
+		} catch (Exception e) {
+			throw e ;
+		}finally {
+			this.dbc.close();
+		}
 		return student;
 	}
 
 	public List<Student> findAll() throws Exception {
-		
-		
-		return null;
+		List<Student> list = new ArrayList<Student>();
+		try {
+				list = this.dao.findAll() ;
+		} catch (Exception e) {
+			throw e ;
+		}finally {
+			this.dbc.close();
+		}
+		return list;
 	}
-	public boolean doCheck(Student student) {
-		// TODO 自动生成的方法存根
+	public boolean doCheck(String ID) throws Exception {
+		
 		return false;
 	}
 

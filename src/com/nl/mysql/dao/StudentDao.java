@@ -9,5 +9,5 @@ public interface StudentDao {
 	public boolean doDelete(String ID)  throws Exception;//通过学号(ID)删除某学生信息
 	public Student findByID(String ID)  throws Exception;//通过学号(ID)查找某学生信息
 	public List<Student> findAll()  throws Exception;//列出所有学生的信息
-	public boolean doCheck(Student student);//学生登入信息核对
+	public boolean doCheck(String ID)  throws Exception;//学生登入信息核对
 }
