@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>选择页面</title>
 </head>
 <body>
 <h1>student</h1>
